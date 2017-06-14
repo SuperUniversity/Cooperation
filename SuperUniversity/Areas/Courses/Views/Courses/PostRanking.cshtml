@@ -1,0 +1,81 @@
+﻿@model MvcClient.Areas.Courses.Models.Ranking
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Ranking</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.deepness, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-3">
+                <input class="rankingRange" id="deepness" name="deepness" type="range" max="10" min="0"/>
+                @*@Html.EditorFor(model => model.deepness, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.deepness, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="col-md-8">
+                <label class="form-control-static" disabled="disabled"></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.relaxing, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-3" >
+                <input class="rankingRange" id="relaxing" name="relaxing" type="range" max="10" min="0" />
+                @*@Html.EditorFor(model => model.relaxing, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.relaxing, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="col-md-8">
+                <label class="form-control-static" disabled="disabled"></label>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sweetness, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-3">
+                <input class="rankingRange" id="sweetness" name="sweetness" type="range" max="10" min="0"/>
+                @*@Html.EditorFor(model => model.sweetness, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sweetness, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="col-md-1">
+                <label class="form-control-static" disabled="disabled"></label>
+            </div>
+            <div class="col-md-7">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script>
+
+    //function showRangeVal() {
+    //    $("#deepness").parent("div").find("input:eq(2)").text($("#deepness").val())
+    //    $("#sweetness").parent("div").find("input:eq(2)").text($("#sweetness").val())
+    //    $("#relaxing").parent("div").find("input:eq(2)").text($("#relaxing").val())
+    //}
+
+    //showRangeVal()
+
+    //$("#deepness").change(function () {
+    //    console.log($("#deepness").val())
+    //    showRangeVal()
+    //})
+    //$("#sweetness").change(function () {
+    //    showRangeVal()
+    //})
+    //$("#relaxing").change(function () {
+    //    showRangeVal()
+    //})
+
+
+</script>

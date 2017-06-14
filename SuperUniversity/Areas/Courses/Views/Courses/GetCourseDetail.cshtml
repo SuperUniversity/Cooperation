@@ -1,0 +1,205 @@
+﻿@model MvcClient.Areas.Courses.Models.AllCollegeCourseModel
+
+@{
+    ViewBag.Title = "GetCourseDetail";
+}
+@section styles{
+    <style>
+        .rankingRange {
+            display: inline;
+            margin-top: 6px;
+        }
+    </style>
+    }
+<h2>@Html.DisplayFor(model => model.CourseName)</h2>
+
+
+<div class="container">
+    <div>
+        @*<h4>AllCollegeCourseModel</h4>*@
+        <hr />
+        <dl class="dl-horizontal">
+            <dt hidden="hidden">
+                @Html.DisplayNameFor(model => model._id)
+            </dt>
+
+            <dd id="ObjId" hidden="hidden">
+                @Html.DisplayFor(model => model._id)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.College)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.College)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Identity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Identity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Semester)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Semester)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Teacher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Teacher)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeAndClassroom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TimeAndClassroom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Major)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Major)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Required)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Required)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaxNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Credit)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Credit)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Limitation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Limitation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Note)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Note)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.lastModified)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.lastModified)
+            </dd>
+
+        </dl>
+    </div>
+    <div id="rankings">
+
+    </div>
+    <div id="createRanking">
+
+    </div>
+
+
+
+
+    <div id="createComment">
+
+    </div>
+    <div id="comments">
+
+    </div>
+</div>
+
+
+
+
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            var ObjId = $('#ObjId').text()
+            var rankingsUrl = '@Url.Action("GetRankings", "Courses", new { area = "Courses"})' + "?strid=" + ObjId.replace(new RegExp(" ",'g'),'')
+            var commentsUrl = '@Url.Action("GetComments", "Courses", new { area = "Courses" })' + "?strid=" + ObjId.replace(new RegExp(" ", 'g'), '')
+            var createRankingRul = '@Url.Action("PostRanking", "Courses", new { area = "Courses" })'
+            var createCommentUrl= '@Url.Action("PostComment", "Courses", new { area = "Courses"})'
+            $("#rankings").load(rankingsUrl)
+            $("#comments").load(commentsUrl)
+            $("#createRanking").load(createRankingRul, function () {
+
+                $(this).find("input").parent("div").next("div").find("label").text(5)
+
+                $(this).find("input").change(function () {
+                    $(this).parent("div").next("div").find("label").text($(this).val())
+                })
+            })
+            $("#createComment").load(createCommentUrl)
+
+            //$("#createRanking ")
+
+
+            //console.log($("#createRanking").find("input").val())
+            //$(this).find("input").change(function () {
+            //    $(this).next("input").val($(this).val())
+            //})
+
+
+
+        })
+
+
+
+
+
+    </script>
+
+
+}

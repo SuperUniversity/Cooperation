@@ -33,14 +33,15 @@
 
             <!-- Thumbnails -->
             <section class="thumbnails">
-
                 <div style="margin-left:200px">
+                    <input type="hidden" value="@Url.Action("action", "controller", new { area = "Courses" })" />
                     <a href="~/images/thumbs/美食.jpg">
                         <img src="~/images/thumbs/美食.jpg" alt="" />
                         <h3>美食地圖</h3>
                     </a>
                 </div>
                 <div>
+                    <input type="hidden" value="@Url.Action("action", "controller", new { area = "Courses" })" />
                     <a href="~/images/thumbs/活動.jpg">
                         <img src="~/images/thumbs/活動.jpg" alt="" />
                         <h3>揪團活動</h3>
@@ -49,18 +50,21 @@
             </section>
             <section class="thumbnails">
                 <div>
+                    <input type="hidden" value="@Url.Action("index", "Courses", new { area = "Courses" })" />
                     <a href="~/images/thumbs/課程.jpg">
                         <img src="~/images/thumbs/課程.jpg" alt="" />
                         <h3>課程檢索</h3>
                     </a>
                 </div>
                 <div>
+                    <input type="hidden" value="@Url.Action("action", "controller", new { area = "Courses" })" />
                     <a href="~/images/thumbs/買賣.jpg">
                         <img src="~/images/thumbs/買賣.jpg" alt="" />
                         <h3>網路書城</h3>
                     </a>
                 </div>
                 <div>
+                    <input type="hidden" value="@Url.Action("action", "controller", new { area = "Courses" })" />
                     <a href="~/images/thumbs/工作.png">
                         <img src="~/images/thumbs/工作.png" alt="" />
                         <h3>打工資訊</h3>
@@ -77,6 +81,18 @@
 <script src="~/Scripts/jquery.poptrox.min.js"></script>
 <script src="~/Scripts/skel.min.js"></script>
 <script src="~/Scripts/main.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('section a').click(function (event) {
+                event.stopPropagation()
+                window.location.href = $(this).parent("div").find("input").val()
+
+            })
+        })
+
+
+    </script>
     }
     <!-- Scripts -->
 

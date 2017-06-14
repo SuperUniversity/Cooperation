@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcClient.Areas.Courses.Models.Comment>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commentstring)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anonym)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentstring)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anonym)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
